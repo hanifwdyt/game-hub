@@ -1,0 +1,89 @@
+{
+  "$schema": "../game-hub/game.schema.json",
+  "id": "bambu-runcing",
+  "title": "Bambu Runcing",
+  "tagline": "Java, 1944–45. Sharpened bamboo, from burning rice fields to news of freedom.",
+  "description": "Side-scrolling pixel action across three chapters: Priangan 1944, the road to Rengasdengklok and Jakarta on 17 August 1945. Pick Raka, Ujang, Sekar or Darmo, ride the armoured battle buffalo and unlock each chapter in turn. Real events, fictional battles.",
+  "genres": [
+    "Action",
+    "Side-Scroller"
+  ],
+  "platforms": [
+    "pc",
+    "mobile"
+  ],
+  "entry": ".hub-dist/index.html",
+  "build": "npx vite build --outDir .hub-dist --emptyOutDir",
+  "controls": "Keyboard: arrows/WASD · Z attack · X jump · C special · V grenade · P pause. Touch (landscape) and gamepad supported.",
+  "version": "0.3.0",
+  "style": {
+    "theme": "fantasy",
+    "accent": "#e0342f",
+    "font": "Press Start 2P"
+  },
+  "art": {
+    "hero": "art/hero.webp",
+    "cover": "art/cover.webp",
+    "tile": "art/tile.webp",
+    "focusX": 0.72
+  },
+  "saveKeys": [
+    "bambu-runcing."
+  ],
+  "progress": {
+    "milestones": [
+      {
+        "id": "ch1",
+        "title": "Chapter 1 · Priangan, 1944",
+        "weight": 1
+      },
+      {
+        "id": "ch2",
+        "title": "Chapter 2 · The road to Rengasdengklok",
+        "weight": 1
+      },
+      {
+        "id": "ch3",
+        "title": "Chapter 3 · Jakarta, 17 August 1945",
+        "weight": 1
+      }
+    ],
+    "source": {
+      "storage": "bambu-runcing.progress.v1",
+      "path": "cleared",
+      "kind": "array",
+      "prefix": "ch"
+    }
+  },
+  "achievements": [
+    {
+      "id": "cleared-ch1",
+      "name": "Chapter 1 cleared",
+      "desc": "Chapter 1 · Priangan, 1944",
+      "points": 25,
+      "hidden": false,
+      "milestone": "ch1"
+    },
+    {
+      "id": "cleared-ch2",
+      "name": "Chapter 2 cleared",
+      "desc": "Chapter 2 · The road to Rengasdengklok",
+      "points": 25,
+      "hidden": false,
+      "milestone": "ch2"
+    },
+    {
+      "id": "cleared-ch3",
+      "name": "Chapter 3 cleared",
+      "desc": "Chapter 3 · Jakarta, 17 August 1945",
+      "points": 50,
+      "hidden": false,
+      "milestone": "ch3"
+    }
+  ],
+  "media": {
+    "trailer": "media/trailer.mp4",
+    "loop": "media/loop.mp4",
+    "poster": "media/poster.webp"
+  }
+}

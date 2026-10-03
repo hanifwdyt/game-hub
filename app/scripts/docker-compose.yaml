@@ -1,0 +1,29 @@
+# Coolify: Docker Compose build pack so the named volume `game-hub-data` (SQLite: accounts, saves, progress) PERSISTS across redeploys.
+# Secrets come from Coolify env: BETTER_AUTH_SECRET (required), BETTER_AUTH_URL (https://game.hanif.app).
+services:
+  hub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - GAMES_ROOT=/games
+      - HUB_DB=/data/hub.db
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET in Coolify}
+      - BETTER_AUTH_URL=${BETTER_AUTH_URL:-https://game.hanif.app}
+    volumes:
+      - game-hub-data:/data
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  game-hub-data:

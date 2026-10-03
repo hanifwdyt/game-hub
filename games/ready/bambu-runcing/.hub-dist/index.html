@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#120d08">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/favicon.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <title>Bambu Runcing</title>
+  <link rel="preload" href="./fonts/press-start-2p-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./fonts/fonts.css">
+  <script type="module" crossorigin src="./assets/index-BCKUsoe4.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-pUPUUjjl.css">
+</head>
+<body>
+  <div id="game"></div>
+  <div id="touch" hidden>
+    <div id="stickZone">
+      <div id="stickBase">
+        <i class="tick t-up"></i><i class="tick t-down"></i><i class="tick t-left"></i><i class="tick t-right"></i>
+        <div id="stickKnob"></div>
+      </div>
+    </div>
+    <div id="btns">
+      <button data-a="grenade" aria-label="Grenade"><svg viewBox="0 0 24 24"><path d="M9 3h5v2h-2v2.2a7 7 0 1 1-6 6.8 7 7 0 0 1 4-6.3V5H9z"/></svg><span>GRN</span></button>
+      <button data-a="special" aria-label="Special"><svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.4L21 11l-6.4 2.6L12 20l-2.6-6.4L3 11l6.4-2.6z"/></svg><span>SP</span></button>
+      <button data-a="jump" aria-label="Jump"><svg viewBox="0 0 24 24"><path d="M12 4l8 8h-5v8H9v-8H4z"/></svg><span>JUMP</span></button>
+      <button data-a="attack" aria-label="Attack"><svg viewBox="0 0 24 24"><path d="M20 3l1 5-9.5 9.5-2-2L19 6l-3-.5zM8 16l2 2-3.5 3.5-2-2z"/></svg><span>ATK</span></button>
+    </div>
+    <button id="pauseBtn" data-a="pause" aria-label="Pause"><i></i><i></i></button>
+  </div>
+  <div id="rotate" hidden><p>Rotate your phone to <b>landscape</b></p></div>
+</body>
+</html>

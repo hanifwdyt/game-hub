@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hanif Play game manifest",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "tagline",
+    "description",
+    "genres",
+    "platforms",
+    "entry",
+    "style"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]{1,63}$",
+      "description": "Must match the folder name"
+    },
+    "title": {
+      "type": "string"
+    },
+    "tagline": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 280
+    },
+    "genres": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "platforms": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "pc",
+          "mobile"
+        ]
+      },
+      "minItems": 1
+    },
+    "entry": {
+      "type": "string",
+      "description": "Relative path to the playable HTML, e.g. index.html or dist/index.html"
+    },
+    "build": {
+      "type": "string",
+      "description": "Command that produces the entry (must use relative asset paths)"
+    },
+    "controls": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "style": {
+      "type": "object",
+      "required": [
+        "accent"
+      ],
+      "properties": {
+        "theme": {
+          "type": "string",
+          "description": "Procedural art theme used until real art exists"
+        },
+        "accent": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "font": {
+          "enum": [
+            "Black Ops One",
+            "Cinzel",
+            "Unbounded",
+            "Manrope",
+            "Press Start 2P"
+          ]
+        }
+      }
+    },
+    "art": {
+      "type": "object",
+      "properties": {
+        "hero": {
+          "type": "string",
+          "description": "16:9 key art, >= 1920px wide"
+        },
+        "cover": {
+          "type": "string",
+          "description": "3:4 cover, >= 600px wide"
+        },
+        "tile": {
+          "type": "string",
+          "description": "1:1 tile, >= 512px"
+        },
+        "focusX": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Horizontal focal point used when cropping (0 left, 1 right)"
+        }
+      }
+    },
+    "saveKeys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "localStorage key prefixes that make up the game's save; mirrored to the player's cloud save"
+    },
+    "progress": {
+      "type": "object",
+      "required": [
+        "milestones"
+      ],
+      "properties": {
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "title"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "source": {
+          "type": "object",
+          "description": "where an unmodified game keeps its own progress",
+          "required": [
+            "storage",
+            "kind"
+          ],
+          "properties": {
+            "storage": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "array",
+                "keys"
+              ]
+            },
+            "prefix": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "achievements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "points"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "points": {
+            "enum": [
+              5,
+              10,
+              25,
+              50,
+              100
+            ]
+          },
+          "hidden": {
+            "type": "boolean"
+          },
+          "stat": {
+            "type": "string"
+          },
+          "threshold": {
+            "type": "number"
+          },
+          "milestone": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "enum": [
+        "development",
+        "ready"
+      ],
+      "description": "informational; the folder (ready/ or development/) is what decides visibility"
+    },
+    "media": {
+      "type": "object",
+      "description": "Trailer assets, paths relative to the game folder",
+      "properties": {
+        "trailer": {
+          "type": "string",
+          "description": "30\u201360 s gameplay trailer (mp4, H.264 + AAC, 1080p)"
+        },
+        "loop": {
+          "type": "string",
+          "description": "6\u20138 s silent loop shown when the tile is focused (mp4 or webm, < 1.5 MB)"
+        },
+        "poster": {
+          "type": "string",
+          "description": "poster frame (webp/jpg)"
+        }
+      }
+    }
+  }
+}
