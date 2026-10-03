@@ -19,7 +19,7 @@ function weigh(dir) {
   })(dir);
   return { bytes, files, biggest };
 }
-for (const stage of ["ready", "development"]) {
+for (const stage of (process.env.STAGES ?? "ready,development").split(",")) {
   const base = path.join(root, stage);
   if (!fs.existsSync(base)) continue;
   console.log(`\n${stage}/`);
